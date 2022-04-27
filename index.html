@@ -1,6 +1,6 @@
 <style> 
 
- .album {
+	.album {
    display: block;
    width: 300px;
    margin: 100px auto;
@@ -15,6 +15,25 @@
 
 <script>
 
+	const album = document.querySelector('.album')
+	const Lan = document.querySelector('.Lan')
 
-
-</script>
+	function imgChange () {
+  	const r = Math.random() * 10
+  	album.style.filter = `blur(${r}px)`
+ 	  Lan.play()
+  	const t = Math.random() * Lan.duration
+  	Lan.currentTime = t
+	}
+  
+  function imgReset (e) {
+    if (e.key === 'x'){
+      Lan.pause()
+    }
+  }
+	
+  window.addEventListener('keydown', imgChange)
+  window.addEventListener('keypress', imgReset)
+  
+  
+</script> 
