@@ -40,13 +40,14 @@
     }
     else {
       const r = Math.random() * 10
-  	album.style.filter = `blur(${r}px)`
- 	  Lan.play()
-  	const t = Math.random() * Lan.duration
-  	Lan.currentTime = t
-    filter.type = "lowshelf"
-    filter.frequency.value = 1000
-    filter.gain.value = 25
+  	  album.style.filter = `blur(${r}px)`
+ 	    Lan.play()
+  	  const t = Math.random() * Lan.duration
+  	  Lan.currentTime = t
+      filter.type = "lowshelf"
+      const w = Math.random() * 10000
+      filter.frequency.value = `blur(${w}px)`
+      filter.gain.value = 25
     }
   }
 	
