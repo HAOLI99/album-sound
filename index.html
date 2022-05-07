@@ -9,14 +9,28 @@
 </style>
 
 
+
 <img class="album" src="album-cover.jpg" alt="a album cover">
 <audio src="Lan.mp3" class="Lan"></audio>
+
+<audio src="audios/electro-pop.mp3" class="Lan"></audio>
+<button class="my-btn">click to upload</button>
+
+<script src="https://cdn.jsdelivr.net/gh/nbriz/FileUploader/FileUploader.js"></script>
+
 
 
 <script>
 
 	const album = document.querySelector('.album')
 	const Lan = document.querySelector('.Lan')
+
+  const context = new AudioContext(),
+    audioSource = context.createMediaElementSource(Lan),
+    filter = context.createBiquadFilter();
+  
+  audioSource.connect(filter);
+  filter.connect(context.destination);
 
   
   function imgReset (e) {
@@ -30,9 +44,24 @@
  	  Lan.play()
   	const t = Math.random() * Lan.duration
   	Lan.currentTime = t
+    filter.type = "lowshelf"
+    filter.frequency.value = 1000
+    filter.gain.value = 25
     }
   }
 	
+  
+  /* global FileUploader */
+new FileUploader({
+    maxSize: 4000,
+    types: ['audio/mpeg', 'audio/ogg', 'audio/vnd.wav'],
+    click: '.my-btn',
+    ready: (file) => {
+      Lan.src = file.data
+    },
+    error: (err) => alert(err)
+  })
+  
   window.addEventListener('keypress', imgReset)
   
   
