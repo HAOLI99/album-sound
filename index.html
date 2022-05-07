@@ -44,10 +44,10 @@
  	    Lan.play()
   	  const t = Math.random() * Lan.duration
   	  Lan.currentTime = t
-      filter.type = "lowshelf"
-      const w = Math.random() * 10000
-      filter.frequency.value = `blur(${w}px)`
-      filter.gain.value = 25
+      filter.type = "highpass"
+      const w = Math.random() * 800
+      filter.frequency.value = w
+      filter.gain.value = 75
     }
   }
 	
