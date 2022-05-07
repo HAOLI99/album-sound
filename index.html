@@ -18,22 +18,21 @@
 	const album = document.querySelector('.album')
 	const Lan = document.querySelector('.Lan')
 
-	function imgChange () {
-  	const r = Math.random() * 10
-  	album.style.filter = `blur(${r}px)`
- 	  Lan.play()
-  	const t = Math.random() * Lan.duration
-  	Lan.currentTime = t
-	}
   
   function imgReset (e) {
     if (e.key === 'x'){
       Lan.pause()
       album.style.filter = `blur(0px)`
     }
+    else {
+      const r = Math.random() * 10
+  	album.style.filter = `blur(${r}px)`
+ 	  Lan.play()
+  	const t = Math.random() * Lan.duration
+  	Lan.currentTime = t
+    }
   }
 	
-  window.addEventListener('keydown', imgChange)
   window.addEventListener('keypress', imgReset)
   
   
