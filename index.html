@@ -9,9 +9,9 @@
 </style>
 
 
-<label for="pet-select">Choose a type of audio filter :</label>
+<label for="filter-select">Choose a type of audio filter :</label>
 
-<select name="pets" id="pet-select">
+<select name="filters" id="filter-select">
     <option value="">--Please choose an option--</option>
     <option value="highpass">High Pass</option>
     <option value="lowpass">Low Pass</option>
@@ -70,6 +70,13 @@ new FileUploader({
   })
   
  
+  const select = document.querySelector('#filter-select')
+  function filterUpdate () {
+    filter.type = select.value
+  }
+  select.addEventListener('change', filterUpdate)
+  
+  
  window.addEventListener('keypress', imgReset)
   
   </script> 
